@@ -2,18 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CatModules } from './modules/cat/cat.modules';
+import { DogService } from './modules/dog/dog.service';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '',
-    database: 'cat',
-    entities: [],
-    synchronize: true,
-  })],
+  imports: [CatModules, DogService],
   controllers: [AppController],
   providers: [AppService],
 })
